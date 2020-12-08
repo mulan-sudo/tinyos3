@@ -71,7 +71,7 @@ int socket_write(void* this, const char *buf, unsigned int n){
   //scb->type=SOCKET_PEER;
   peer_socket* peer_s=scb->peer_s;
   pipe_cb* p=peer_s->read_pipe;
-  pipe_read(p,buf,n);
+  pipe_write(p,buf,n);
 
   return 0;
 }
@@ -83,7 +83,7 @@ int socket_read(void* this, char *buf, unsigned int n){
   //scb->type=SOCKET_PEER;
   peer_socket* peer_s=scb->peer_s;
   pipe_cb* p=peer_s->write_pipe;
-  pipe_write(p,buf,n);
+  pipe_read(p,buf,n);
 
   return 0;
 }
