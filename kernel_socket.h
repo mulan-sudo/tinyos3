@@ -34,12 +34,20 @@ typedef struct socket_control_block{
 	port_t port;
 
 	union{
-		listener_socket* listener_s;
-		unbound_socket* unbound_s;
-		peer_socket* peer_s;
+		listener_socket listener_s;
+		unbound_socket unbound_s;
+		peer_socket peer_s;
 	};
 
 }socket_cb;
+
+typedef struct request{
+	int admitted;
+	socket_cb* peer;
+	CondVar connect_cv;
+	rlnode queue_node;
+}connection_request;
+
 int socket_write(void* this, const char *buf, unsigned int n);
 
 int socket_read(void* this, char *buf, unsigned int n);

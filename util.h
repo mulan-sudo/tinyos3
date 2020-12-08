@@ -291,6 +291,8 @@ typedef struct device_control_block DCB;	/**< @brief Forward declaration */
 typedef struct file_control_block FCB;		/**< @brief Forward declaration */
 typedef struct process_thread_control_block PTCB;	/**< @brief Forward declaration */
 typedef struct socket_control_block socket_cb;	
+typedef struct request connection_request;	
+
 /** @brief A convenience typedef */
 typedef struct resource_list_node * rlnode_ptr;
 
@@ -317,6 +319,7 @@ typedef struct resource_list_node {
     DCB* dcb;
     FCB* fcb;
     socket_cb* socket_cb;
+    connection_request* cr;
     void* obj;
     rlnode_ptr node;
     intptr_t num;
